@@ -1,26 +1,35 @@
+
+from flask_bootstrap import Bootstrap
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from config import config_options
 
 
-
-
+bootstrap=Bootstrap()
 db = SQLAlchemy()
 
-def create_app():
+def create_app(config_name):
     app = Flask(__name__)
 
-    app.config['SECRET_KEY'] = 'secret-key-goes-here'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+    # app.config['SECRET_KEY'] = 'my sec key'
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 
     db.init_app(app)
+    bootstrap.init_app(app)
 
-    # blueprint for auth routes in our app
-    from .auth import auth as auth_blueprint
-    app.register_blueprint(auth_blueprint)
+
+    app.config.from_object(config_options[config_name])
+
+    # # blueprint for auth routes in our app
+    # from .auth import auth as auth_blueprint
+    # app.register_blueprint(auth_blueprint)
 
     # blueprint for non-auth parts of app
-    from .main import main as main_blueprint
-    app.register_blueprint(main_blueprint)
+    # from .main import main as main_blueprint
+    # app.register_blueprint(main_blueprint)
+
+     
+
 
 
 
