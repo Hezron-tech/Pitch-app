@@ -4,7 +4,7 @@ class Config:
     
 
 
-    SECRET_KEY = 'my secret'
+    SECRET_KEY = 'hezzy'
     SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://hezron:hezzy@localhost/pitch'
     # UPLOADED_PHOTOS_DEST ='app/static/photos'
     
