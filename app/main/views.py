@@ -11,4 +11,8 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    return render_template('index.html')
+    all_pitches=Pitch.query.order_by('id').all()
+    print(all_pitches)
+    title='Pitch App'
+    return render_template('index.html',title=title)
+    
