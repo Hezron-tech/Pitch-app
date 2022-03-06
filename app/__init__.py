@@ -19,8 +19,7 @@ photos = UploadSet('photos',IMAGES)
 def create_app(config_name):
     app = Flask(__name__)
 
-    # app.config['SECRET_KEY'] = 'my sec key'
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+    
 
     db.init_app(app)
     bootstrap.init_app(app)
