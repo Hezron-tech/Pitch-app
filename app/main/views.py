@@ -6,10 +6,6 @@ from flask_login import login_required,current_user
 from .. import db,photos
 import markdown2  
 
-
-
-# Views
-
 @main.route('/')
 def index():
 
@@ -30,10 +26,9 @@ def new_pitch():
         category = form.category.data
         newPitch = form.pitch_info.data
         #update pitch instance
-        new_pitch = Pitch(pitch_title=title,
-                          pitch_category=category,
-                          pitch_itself=newPitch,
-                          user=current_user)
+        new_pitch = Pitch(pitch_title=title,pitch_category=category,pitch_itself=newPitch,user=current_user)
+
+        
         #save pitch
         new_pitch.save_pitch()
         return redirect(url_for('.index'))
